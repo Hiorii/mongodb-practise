@@ -38,7 +38,7 @@ exports.addNew = async (req, res) => {
         const { name } = req.body;
         const newDepartment = new Department({ name: name });
         await newDepartment.save();
-        res.json({ newDepartment });
+        res.json(newDepartment);
     } catch(err) {
         res.status(500).json({ message: err });
     }
@@ -52,7 +52,7 @@ exports.update = async (req, res) => {
         if(dep) {
             dep.name = name;
             await dep.save();
-            res.json({ dep });
+            res.json(dep);
         }
         else res.status(404).json({ message: 'Not found...' });
     }
